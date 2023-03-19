@@ -12,12 +12,6 @@ class Contact:
     def __str__(self) -> str:
         return f"{self.first_name} {self.last_name} {self.email}"
    
-    def contact(self) -> str:
-        name_for_commun = input("Будь ласка, введіть ім'я зі списку: ")
-        for contact in my_contacts:
-         if contact.first_name == name_for_commun:
-            print (f"Зв'язуюся з {contact.first_name} {contact.last_name}, {contact.email}")
-   
     @property
     def lenght(self) -> int:
         return len(self.first_name) + len(self.last_name)
@@ -36,33 +30,19 @@ class BaseContact(Contact):
         self.company = company
         self.job = job
 
-    def contact(self) -> str:
-        name_for_commun = input("Будь ласка, введіть ім'я зі списку: ")
-        for contact in my_contacts:
-         if contact.first_name == name_for_commun:
-            print (f"Я набираю {self.phone_number} і телефоную {contact.first_name} {contact.last_name}")
-
 card1 = BaseContact(first_name="David", last_name="Kyler", company="Apple", job="manager", email="kylerd@gmail.com", phone_number = '123456789')
 card2 = BaseContact(first_name="Brain", last_name="Coyle", company="Google", job="director",email="coyle1234@gmail.com", phone_number = '987654321')
 card3 = BaseContact(first_name="Helen", last_name="Ames", company="Food", job="driver", email="helenka@gmail.com", phone_number = '123789456')
 card4 = BaseContact(first_name="Barbara", last_name="Hassan", company="Animal", job="accountant", email="barbi24@gmail.com", phone_number = '456789123')
 card5 = BaseContact(first_name="Albert", last_name="Tryon", company="Google", job="cleaner",email="tryon@gmail.com", phone_number = '321654987')
 my_contacts = [card1,card2,card3,card4,card5]
-for card in  my_contacts:
-   print(f'{card}, {card.lenght}')
-card.contact() 
+
 
 class BusinessContact(BaseContact): 
     def __init__(self, first_name: str, last_name: str, company: str, job: str, email: str, phone_number: str, job_phone_number:str) -> None:
         super().__init__(first_name, last_name, company, job, email, phone_number)
         self.job_phone_number = job_phone_number
 
-    def contact(self) -> str:
-        name_for_commun = input("Будь ласка, введіть ім'я зі списку: ")
-        for contact in my_contacts:
-         if contact.first_name == name_for_commun:
-            print (f"Я набираю {self.job_phone_number} і телефоную {contact.first_name} {contact.last_name}")
-    
 card1 = BusinessContact(first_name="Anna", last_name="Kyler", company="Apple", job="manager", email="kylerd@gmail.com", phone_number = '123456789', job_phone_number = '985236417')
 card2 = BusinessContact(first_name="Brain", last_name="Coyle", company="Google", job="director",email="coyle1234@gmail.com", phone_number = '987654321', job_phone_number = '985236417')
 card3 = BusinessContact(first_name="Helen", last_name="Ames", company="Food", job="driver", email="helenka@gmail.com", phone_number = '123789456', job_phone_number = '985236417')
@@ -71,7 +51,13 @@ card5 = BusinessContact(first_name="Albert", last_name="Tryon", company="Google"
 my_contacts = [card1,card2,card3,card4,card5]
 for card in  my_contacts:
    print(f'{card}, {card.lenght}')
-card.contact()
+
+def contact(self) -> str:
+        name_for_commun = input("Будь ласка, введіть ім'я зі списку: ")
+        for contact in my_contacts:
+         if contact.first_name == name_for_commun:
+            print (f"Зв'язуюся з {contact.first_name} {contact.last_name}, {contact.email}")
+contact(my_contacts)          
 
 def create_contacts() -> List:
     type_card = input('Please enter type card: base or business: ')
